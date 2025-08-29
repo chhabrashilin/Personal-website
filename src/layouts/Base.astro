@@ -1,0 +1,56 @@
+---
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
+import { SITE } from '@config';
+import '@styles/global.css';
+const { title, description } = Astro.props as { title?: string; description?: string };
+---
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} • ${SITE.name}` : `${SITE.name} — ${SITE.title}`}</title>
+    <meta name="description" content={description || SITE.description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, SITE.siteUrl).toString()} />
+    <link rel="icon" href="/favicon.ico" />
+    
+    {SITE.plausibleDomain && (
+      <>
+        <script is:inline>
+          {`
+          if (localStorage.getItem('analytics') !== 'off') {
+            var s = document.createElement('script');
+            s.defer = true;
+            s.setAttribute('data-domain', '${SITE.plausibleDomain}');
+            s.src = 'https://plausible.io/js/plausible.js';
+            document.head.appendChild(s);
+          }
+          `}
+        </script>
+      </>
+    )}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title || `${SITE.name} — ${SITE.title}`} />
+    <meta property="og:description" content={description || SITE.description} />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)" />
+    
+  </head>
+  <body class="min-h-full bg-slate-50 text-slate-900 antialiased dark:bg-slate-900 dark:text-white">
+    <Navbar />
+    <main id="content" class="container py-10" role="main">
+      <slot />
+      {SITE.plausibleDomain && (
+        <div class="mt-12 text-sm text-slate-500">
+          <button class="underline-accent" onclick="localStorage.setItem('analytics','off'); alert('Analytics disabled'); location.reload()">Disable analytics</button>
+        </div>
+      )}
+    </main>
+    <Footer />
+  </body>
+</html>
+
+

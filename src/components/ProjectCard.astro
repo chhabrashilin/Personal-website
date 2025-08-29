@@ -1,0 +1,40 @@
+---
+import Tag from './Tag.astro';
+interface Link { href: string; label: string }
+interface Project {
+  slug: string;
+  title: string;
+  impact: string;
+  tags: string[];
+  tech: string[];
+  links: { github?: string; live?: string };
+  cover: string;
+  metrics?: string[];
+}
+const { project } = Astro.props as { project: Project };
+---
+<a href={`/projects/${project.slug}`} class="card overflow-hidden group" aria-label={`Open case study: ${project.title}`}>
+  <div class="aspect-[16/9] w-full overflow-hidden">
+    <img src={project.cover} alt={project.title} loading="lazy" class="h-full w-full object-cover transition group-hover:scale-[1.02]" />
+  </div>
+  <div class="p-4 flex flex-col gap-3">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-semibold text-slate-900 dark:text-white underline-accent">{project.title}</h3>
+      <div class="flex gap-2">
+        {project.links.github && <a href={project.links.github} aria-label="GitHub" class="text-slate-600 hover:text-primary-600 underline-accent">GitHub</a>}
+        {project.links.live && <a href={project.links.live} aria-label="Live" class="text-slate-600 hover:text-primary-600 underline-accent">Live</a>}
+      </div>
+    </div>
+    <p class="text-sm text-slate-600 dark:text-slate-300">{project.impact}</p>
+    <div class="flex flex-wrap gap-2">
+      {project.tags.map((t) => <Tag label={t} />)}
+    </div>
+    {project.metrics && project.metrics.length > 0 && (
+      <ul class="text-sm text-slate-700 dark:text-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
+        {project.metrics.map((m) => <li>• {m}</li>)}
+      </ul>
+    )}
+  </div>
+</a>
+
+

@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "flight-planner",
+    "title": "Flight Planner",
+    "impact": "Shipped a PWA that reduced itinerary recompute latency by 30% via caching and parallelism.",
+    "tags": ["SWE"],
+    "tech": ["TypeScript", "Astro", "Vite", "Vitest", "Workbox"],
+    "links": { "github": "https://github.com/your-username/flight-planner", "live": "https://your-domain/flight-planner" },
+    "cover": "/images/flight-planner.svg",
+    "arch": "/images/flight-arch.svg",
+    "metrics": ["-30% p95 latency", "+200 weekly users"],
+    "context": "Weekend project growing into a polished PWA for quick multi-city planning.",
+    "role": "Full‑stack engineer", 
+    "results": [
+      "Cut recompute latency with memoized route graph and cache invalidation.",
+      "Added CI tests to block regressions and flakiness.",
+      "Introduced offline mode to keep itineraries available."
+    ],
+    "learnings": ["Cache policies must model user intent, not objects.", "Synthetic tests catch painful edge cases early."]
+  },
+  {
+    "slug": "aq-nowcasting",
+    "title": "Air Quality Nowcasting",
+    "impact": "Deployed a nowcasting model that improved RMSE by 12% and refreshed every 15 minutes.",
+    "tags": ["ML"],
+    "tech": ["Python", "PyTorch", "ONNX", "FastAPI", "Weights & Biases"],
+    "links": { "github": "https://github.com/your-username/aq-nowcasting" },
+    "cover": "/images/aq-cover.svg",
+    "arch": "/images/aq-arch.svg",
+    "metrics": ["-12% RMSE", "+6 hr horizon"],
+    "context": "Research-to-prod pipeline for air quality nowcasts using sensor and satellite data.",
+    "role": "ML engineer",
+    "results": [
+      "Quantized model to ONNX, reducing inference cost by 25%.",
+      "Built evaluation dashboard and automated backtests.",
+      "Containerized inference and deployed behind CDN."
+    ],
+    "learnings": ["Small data quality wins beat complex models.", "Backtests are the contract with the future."]
+  },
+  {
+    "slug": "email-triage-agent",
+    "title": "Email Triage Agent",
+    "impact": "Designed an agent that drafts responses and auto-labels, saving ~3h/week.",
+    "tags": ["AI"],
+    "tech": ["TypeScript", "OpenAI", "Guardrails", "LangChain Lite"],
+    "links": { "github": "https://github.com/your-username/email-triage-agent" },
+    "cover": "/images/agent-cover.svg",
+    "arch": "/images/agent-arch.svg",
+    "metrics": ["-65% manual triage", "+2x response speed"],
+    "context": "Inbox assistant with prompt design, few-shot tuning, and safety checks.",
+    "role": "AI engineer",
+    "results": [
+      "Implemented guardrails to refuse PII exfiltration and risky actions.",
+      "Optimized prompts cutting token usage ~30% with no quality loss.",
+      "Added feedback loop to learn from user corrections."
+    ],
+    "learnings": ["Guardrails are UX features, not just safety.", "Telemetry drives prompt iteration."]
+  },
+  {
+    "slug": "skywash-cirrus",
+    "title": "SkyWash on CIRRUS",
+    "impact": "Case study of a containerized deployment on a low-cost edge cluster.",
+    "tags": ["Cloud"],
+    "tech": ["Docker", "Kubernetes", "GitHub Actions", "Traefik"],
+    "links": { "github": "https://github.com/your-username/skywash" },
+    "cover": "/images/cloud-cover.svg",
+    "arch": "/images/cloud-arch.svg",
+    "metrics": ["99.9% uptime", "-20% infra cost"],
+    "context": "Documented rollout with health checks, blue/green deploys, and observability.",
+    "role": "Cloud engineer",
+    "results": [
+      "Added canary and blue/green to reduce risk during releases.",
+      "Configured dashboards and alerts on SLOs.",
+      "Automated rollbacks using health signals."
+    ],
+    "learnings": ["Simplicity beats exotic infra.", "Make rollbacks boring."]
+  }
+]
+
+

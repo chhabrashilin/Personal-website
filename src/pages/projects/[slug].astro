@@ -1,0 +1,53 @@
+---
+import Base from '@layouts/Base.astro';
+import projects from '@data/projects.json';
+import Tag from '@components/Tag.astro';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+const { slug } = Astro.params;
+const project = projects.find((p) => p.slug === slug);
+if (!project) throw new Error('Project not found');
+---
+<Base title={project.title} description={project.impact}>
+  <article class="space-y-6">
+    <header>
+      <h1 class="text-2xl font-bold">{project.title}</h1>
+      <p class="text-slate-600 dark:text-slate-300">{project.impact}</p>
+      <div class="mt-2 flex flex-wrap gap-2">{project.tags.map((t)=> <Tag label={t} />)}</div>
+    </header>
+    <img src={project.cover} alt={project.title} class="w-full rounded-lg border border-slate-900/10 dark:border-white/10" loading="lazy" />
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="card p-4"><h3 class="font-semibold mb-2">Context</h3><p class="text-sm">{project.context}</p></div>
+      <div class="card p-4"><h3 class="font-semibold mb-2">Role</h3><p class="text-sm">{project.role}</p></div>
+      <div class="card p-4"><h3 class="font-semibold mb-2">Tech</h3><p class="text-sm">{project.tech.join(', ')}</p></div>
+    </section>
+    {project.demo && (
+      <section>
+        <h3 class="font-semibold mb-2">Demo</h3>
+        <img src={project.demo} alt="Demo" class="rounded-lg border border-slate-900/10 dark:border-white/10" loading="lazy" />
+      </section>
+    )}
+    {project.arch && (
+      <section>
+        <h3 class="font-semibold mb-2">Architecture</h3>
+        <img src={project.arch} alt="Architecture diagram" class="rounded-lg border border-slate-900/10 dark:border-white/10" loading="lazy" />
+      </section>
+    )}
+    <section>
+      <h3 class="font-semibold mb-2">Results</h3>
+      <ul class="list-disc ms-5 text-slate-700 dark:text-slate-200">
+        {project.results.map((r)=> <li>{r}</li>)}
+      </ul>
+    </section>
+    <section>
+      <h3 class="font-semibold mb-2">Key learnings</h3>
+      <ul class="list-disc ms-5 text-slate-700 dark:text-slate-200">
+        {project.learnings.map((r)=> <li>{r}</li>)}
+      </ul>
+    </section>
+  </article>
+</Base>
+
+

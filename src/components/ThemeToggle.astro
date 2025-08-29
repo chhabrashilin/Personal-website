@@ -1,0 +1,32 @@
+---
+const script = `
+  const storageKey = 'theme';
+  const root = document.documentElement;
+  function setTheme(t){
+    if(t==='dark'){ root.classList.add('dark'); localStorage.setItem(storageKey,'dark'); }
+    else { root.classList.remove('dark'); localStorage.setItem(storageKey,'light'); }
+  }
+  function toggle(){ setTheme(root.classList.contains('dark')?'light':'dark'); }
+  // Initialize
+  const preferred = localStorage.getItem(storageKey) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  setTheme(preferred);
+  window.__toggleTheme = toggle;
+`;
+---
+<script is:inline>
+  {script}
+  // no-op, included inline to run early
+</script>
+<button
+  type="button"
+  class="p-2 rounded-md hover:bg-slate-900/5 dark:hover:bg-white/10"
+  aria-label="Toggle theme"
+  onclick="window.__toggleTheme && window.__toggleTheme()"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+    <path d="M12 3v1M16.95 7.05l.7.7M21 12h-1M16.95 16.95l.7-.7M12 20v1M6.35 16.95l-.7-.7M4 12H3M6.35 7.05l-.7.7" />
+    <circle cx="12" cy="12" r="5" />
+  </svg>
+</button>
+
+

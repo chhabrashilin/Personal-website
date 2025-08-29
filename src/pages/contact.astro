@@ -1,0 +1,33 @@
+---
+import Base from '@layouts/Base.astro';
+import { SITE } from '@config';
+---
+<Base title="Contact">
+  <h1 class="text-2xl font-bold mb-6">Contact</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form action="https://formspree.io/f/your-form-id" method="POST" class="card p-5 space-y-4" aria-label="Contact form">
+      <div>
+        <label class="block text-sm mb-1" for="name">Name</label>
+        <input id="name" name="name" required class="w-full rounded-md border border-slate-900/10 dark:border-white/10 bg-white dark:bg-slate-900 px-3 py-2" />
+      </div>
+      <div>
+        <label class="block text-sm mb-1" for="email">Email</label>
+        <input id="email" type="email" name="email" required class="w-full rounded-md border border-slate-900/10 dark:border-white/10 bg-white dark:bg-slate-900 px-3 py-2" />
+      </div>
+      <div>
+        <label class="block text-sm mb-1" for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required class="w-full rounded-md border border-slate-900/10 dark:border-white/10 bg-white dark:bg-slate-900 px-3 py-2"></textarea>
+      </div>
+      <button class="btn-primary" type="submit">Send</button>
+    </form>
+    <div class="card p-5 space-y-3">
+      <p>Prefer email or LinkedIn?</p>
+      <div class="flex gap-3">
+        <a class="btn-secondary" href={`mailto:${SITE.email}`}>Email</a>
+        <a class="btn-secondary" href={SITE.linkedin}>LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</Base>
+
+

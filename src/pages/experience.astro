@@ -1,0 +1,30 @@
+---
+import Base from '@layouts/Base.astro';
+---
+<Base title="Experience">
+  <h1 class="text-2xl font-bold mb-6">Experience</h1>
+  <ol class="relative border-s-l border-slate-900/10 dark:border-white/10 ml-4">
+    <li class="mb-10 ms-6">
+      <span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-white">1</span>
+      <h3 class="font-semibold">Software Engineer • Company XYZ</h3>
+      <p class="text-sm text-slate-500">2023 — Present</p>
+      <ul class="mt-2 list-disc ms-5 text-slate-700 dark:text-slate-200">
+        <li>Reduced p95 API latency by 30% via caching and async pipelines.</li>
+        <li>Shipped CI tests that cut integration failures by 40%.</li>
+        <li>Led migration to Astro, improving Lighthouse to 98/100.</li>
+      </ul>
+    </li>
+    <li class="mb-10 ms-6">
+      <span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-white">2</span>
+      <h3 class="font-semibold">ML Engineer • Lab ABC</h3>
+      <p class="text-sm text-slate-500">2022 — 2023</p>
+      <ul class="mt-2 list-disc ms-5 text-slate-700 dark:text-slate-200">
+        <li>Delivered nowcasting model improving RMSE by 12% on AQI.</li>
+        <li>Productionized inference with ONNX, cutting cost 25%.</li>
+        <li>Built evaluation dashboard for model monitoring.</li>
+      </ul>
+    </li>
+  </ol>
+</Base>
+
+

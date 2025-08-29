@@ -1,0 +1,10 @@
+/* Use fontsource variable Inter via CSS import in global.css; this is for preload alias */
+@font-face {
+  font-family: 'InterVariable';
+  src: url('/fonts/inter-var.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+

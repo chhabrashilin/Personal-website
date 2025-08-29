@@ -1,0 +1,49 @@
+---
+import Base from '@layouts/Base.astro';
+import { SITE } from '@config';
+import Stat from '@components/Stat.astro';
+---
+<Base>
+  <section class="py-8 sm:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-8">
+      <div class="md:col-span-7 space-y-6">
+        <h1 class="text-3xl sm:text-5xl font-bold leading-tight">
+          <span class="gradient-text">{SITE.name}</span>
+          <span class="block text-slate-900 dark:text-white">{SITE.title}</span>
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-prose">
+          I design, build, and ship performant products with measurable impact across SWE, ML, and AI.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/projects" class="btn-primary glow">View Projects</a>
+          <a href={SITE.resumeUrl} class="btn-secondary underline-accent">Download Resume</a>
+        </div>
+      </div>
+      <div class="md:col-span-5 grid grid-cols-3 gap-4">
+        <Stat value="95+" label="Lighthouse score" />
+        <Stat value="-30%" label="Latency reduced" />
+        <Stat value="+200" label="Users onboarded" />
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-semibold mb-4">In Short</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="/projects?tag=SWE" class="card p-5">
+        <h3 class="font-semibold">SWE</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Build reliable web apps with clean architecture and CI.</p>
+      </a>
+      <a href="/projects?tag=ML" class="card p-5">
+        <h3 class="font-semibold">ML</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Train and evaluate models with pragmatic MLOps.</p>
+      </a>
+      <a href="/projects?tag=AI" class="card p-5">
+        <h3 class="font-semibold">AI</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Design agents with guardrails and measurable outcomes.</p>
+      </a>
+    </div>
+  </section>
+</Base>
+
+
